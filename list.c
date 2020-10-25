@@ -132,6 +132,7 @@ void removeAll(List* list, int (*is_remove)(void* data)) {
 }
 
 void swapNodes(Node* a, Node* b) {
+    if(a == b) return;
     void* a_data = a->data;
     a->data = b->data;
     b->data = a_data;
