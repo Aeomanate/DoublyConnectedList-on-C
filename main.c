@@ -8,10 +8,13 @@ void printData(void* data) {
     printf("%d ", *((int*)data));
 }
 
-Data* createData(int x) {
+void* createData(int x) {
     Data* data = malloc(sizeof(Data));
     data->x = x;
     return data;
+}
+void* copyData(void* data) {
+    return createData(((Data*)data)->x);
 }
 
 int removeCond(void* data) {
@@ -44,7 +47,7 @@ int main() {
     map(list, printData);
     
     printf("\nCopied: ");
-    List* copied = copyList(list);
+    List* copied = copyList(list, copyData);
     map(copied, printData);
     
     int n = 0;

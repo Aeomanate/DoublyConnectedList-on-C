@@ -21,7 +21,7 @@ List* map(List* list, void(*f)(void* data));
 List* mapr(List* list, void(*f)(void* data));
 
 List* createList(void (*deleter)(void* data));
-List* copyList(List* list);
+List* copyList(List* list, void*(*copier)(void* data));
 
 void pushFront(List* list, void* data);
 void pushTailData(List* list, void* data);

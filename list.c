@@ -22,11 +22,11 @@ List* createList(void (*deleter)(void* data)) {
     list->size = 0;
     return list;
 }
-List* copyList(List* list) {
+List* copyList(List* list, void*(*copier)(void* data)) {
     List* copied = createList(list->data_deleter);
     Node* cur = list->head;
     while(cur != NULL) {
-        pushTailData(copied, cur->data);
+        pushTailData(copied, copier(cur->data));
         cur = cur->next;
     }
     return copied;
